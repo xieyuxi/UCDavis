@@ -8,6 +8,7 @@ using Microsoft.ServiceBus;
 using Microsoft.ServiceBus.Messaging;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.ServiceRuntime;
+using KeyManager;
 
 namespace AutomationService
 {
@@ -24,6 +25,8 @@ namespace AutomationService
         public override void Run()
         {
             Trace.WriteLine("Starting processing of messages");
+            // Instantiate Key Manager
+            KeyManager keyManager = new KeyManager("UCDavisVault", "West US");
 
             // Initiates the message pump and callback is invoked for each message that is received, calling close on the client will stop the pump.
             Client.OnMessage((receivedMessage) =>
@@ -32,6 +35,19 @@ namespace AutomationService
                     {
                         // Process the message
                         Trace.WriteLine("Processing Service Bus message: " + receivedMessage.SequenceNumber.ToString());
+                    
+                        // Check if users is logged in??
+                        // Parameters need to become variables from Received Messages
+                        if(!keyManager.check_user("daldja3224faadad", "UCDavisVault")){
+                            // Create Key Vault environment for user
+                            keyManager.configure_keyvault_environment("UCDavisRG");
+
+                            // Create user's private key
+                            keyManager.create_user_key("tiwanaca");
+                        }
+                        // Encrypt raw data document
+                        keyManager.encrypt_stream("fafda3rq3", null);
+
                     }
                     catch
                     {

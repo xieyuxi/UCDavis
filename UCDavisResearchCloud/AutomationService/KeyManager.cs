@@ -19,10 +19,12 @@ namespace AutomationService
     {
         private String vaultName;
         private String location;
+        private String userPrivateKey;
 
         public KeyManager(String vaultName, String location){
             this.vaultName = vaultName;
             this.location = location;
+            this.userPrivateKey = null;
         }
         
         public void configure_keyvault_environment(String resourceGroup){
@@ -52,9 +54,7 @@ namespace AutomationService
             }
         }
 
-        public String create_user_key( String username){
-            String userKey = null;
-
+        public void create_user_key( String username){
             using (PowerShell PowerShellInstance = PowerShell.Create()){
                 // Prepare a collection to store the user's key
                 PSDataCollection<PSObject> privateKey = new PSDataCollection<PSObject>();
@@ -72,9 +72,27 @@ namespace AutomationService
                 }
                 Console.WriteLine("Execution has stopped. The pipeline state: " + PowerShellInstance.InvocationStateInfo.State);
                 // Set user's private key
-                userKey = privateKey.ToString();
+                this.userPrivateKey = privateKey.ToString();
             }
-            return userKey;
+        }
+
+        // Check user's Vault
+        public Boolean check_user(String user_id, String vault_name){
+            Boolean userHasKey = false;
+
+            // Write your code here...
+
+            return userHasKey;
+        }
+        
+        public String get_user_key(){
+            return this.userPrivateKey;
+        }
+
+        // Encrypt Key
+        public void encrypt_stream(String key, FileStream rawDataStream){
+
+            // Write your code here...
         }
 
         void Error_DataAdded(object sender, DataAddedEventArgs e)
