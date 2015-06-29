@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>2.6</ProductVersion>
+    <ProjectGuid>8ffcda32-dec5-470f-9bf6-14d94826a097</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UCDavisResearchCloud</RootNamespace>
+    <AssemblyName>UCDavisResearchCloud</AssemblyName>
+    <StartDevelopmentStorage>True</StartDevelopmentStorage>
+    <Name>UCDavisResearchCloud</Name>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- Items for the project -->
+  <ItemGroup>
+    <ServiceDefinition Include="ServiceDefinition.csdef" />
+    <ServiceConfiguration Include="ServiceConfiguration.Local.cscfg" />
+    <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutomationService\AutomationService.csproj">
+      <Name>AutomationService</Name>
+      <Project>{c9f8dfe0-a5b2-4cd9-8841-71b72391a05a}</Project>
+      <Private>True</Private>
+      <RoleType>Worker</RoleType>
+      <RoleName>AutomationService</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudManagementAPI\CloudManagementAPI.csproj">
+      <Name>CloudManagementAPI</Name>
+      <Project>{8f3b378c-89b3-4f1f-b1bb-0266b9e4fe76}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>CloudManagementAPI</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
+    <ProjectReference Include="..\ManagementPlatform\ManagementPlatform.csproj">
+      <Name>ManagementPlatform</Name>
+      <Project>{1d5add26-78a3-44ce-838b-2e10017b20a6}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>ManagementPlatform</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
+    <ProjectReference Include="..\ResearchDataIngestionAPI\ResearchDataIngestionAPI.csproj">
+      <Name>ResearchDataIngestionAPI</Name>
+      <Project>{367f73cb-24dd-4019-84cb-01e7c3755e2b}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>ResearchDataIngestionAPI</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
+    <ProjectReference Include="..\ResearchPlatform\ResearchPlatform.csproj">
+      <Name>ResearchPlatform</Name>
+      <Project>{74572c92-45d9-484d-823e-1ec7a8a59b43}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>ResearchPlatform</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AutomationServiceContent\" />
+    <Folder Include="CloudManagementAPIContent\" />
+    <Folder Include="ManagementPlatformContent\" />
+    <Folder Include="ResearchDataIngestionAPIContent\" />
+    <Folder Include="ResearchPlatformContent\" />
+  </ItemGroup>
+  <ItemGroup>
+    <DiagnosticsConfiguration Include="AutomationServiceContent\diagnostics.wadcfgx" />
+    <DiagnosticsConfiguration Include="CloudManagementAPIContent\diagnostics.wadcfgx" />
+    <DiagnosticsConfiguration Include="ManagementPlatformContent\diagnostics.wadcfgx" />
+    <DiagnosticsConfiguration Include="ResearchDataIngestionAPIContent\diagnostics.wadcfgx" />
+    <DiagnosticsConfiguration Include="ResearchPlatformContent\diagnostics.wadcfgx" />
+  </ItemGroup>
+  <!-- Import the target files for this project template -->
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+    <CloudExtensionsDir Condition=" '$(CloudExtensionsDir)' == '' ">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Windows Azure Tools\2.6\</CloudExtensionsDir>
+  </PropertyGroup>
+  <Import Project="$(CloudExtensionsDir)Microsoft.WindowsAzure.targets" />
+</Project>
