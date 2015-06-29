@@ -4,19 +4,21 @@
     <Instances count="1" />
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=ucdavisplatformstorage;AccountKey=gt7oTTflBCeFh0mnVbfbJrfVVljjD1IvuzqGrBv5lSIAiASwDbXHammS3qF0fmX7UyzkEbcm+9uHdVdUMvlhoQ==" />
     </ConfigurationSettings>
   </Role>
   <Role name="ManagementPlatform">
     <Instances count="1" />
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=ucdavisplatformstorage;AccountKey=gt7oTTflBCeFh0mnVbfbJrfVVljjD1IvuzqGrBv5lSIAiASwDbXHammS3qF0fmX7UyzkEbcm+9uHdVdUMvlhoQ==" />
     </ConfigurationSettings>
   </Role>
   <Role name="AutomationService">
     <Instances count="1" />
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
-      <Setting name="Microsoft.ServiceBus.ConnectionString" value="Endpoint=sb://[your namespace].servicebus.windows.net;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[your key]" />
+      <Setting name="Microsoft.ServiceBus.ConnectionString" value="Endpoint=sb://ucdavisservicebus.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=sDKYWtCim6RfyK16uenYueVGHBcDyNyfCAYhjFY1YCA=" />
     </ConfigurationSettings>
   </Role>
   <Role name="CloudManagementAPI">

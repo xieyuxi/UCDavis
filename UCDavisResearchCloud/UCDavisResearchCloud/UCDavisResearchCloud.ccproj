@@ -82,6 +82,7 @@
     <Folder Include="AutomationServiceContent\" />
     <Folder Include="CloudManagementAPIContent\" />
     <Folder Include="ManagementPlatformContent\" />
+    <Folder Include="Profiles" />
     <Folder Include="ResearchDataIngestionAPIContent\" />
     <Folder Include="ResearchPlatformContent\" />
   </ItemGroup>
@@ -91,6 +92,9 @@
     <DiagnosticsConfiguration Include="ManagementPlatformContent\diagnostics.wadcfgx" />
     <DiagnosticsConfiguration Include="ResearchDataIngestionAPIContent\diagnostics.wadcfgx" />
     <DiagnosticsConfiguration Include="ResearchPlatformContent\diagnostics.wadcfgx" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishProfile Include="Profiles\ucdaviscloudProduction.azurePubxml" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>
