@@ -161,6 +161,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BlobStorageService.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TenantController.cs" />
@@ -214,6 +215,7 @@
     <Content Include="Views\Tenant\SignUpCallback.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\UserProfile.cshtml" />
+    <Content Include="Views\Home\Upload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

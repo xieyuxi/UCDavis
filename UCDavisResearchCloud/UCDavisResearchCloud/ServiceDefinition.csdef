@@ -25,6 +25,7 @@
     </Sites>
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
+      <Setting name="ImageStorageAccountConn" />
     </ConfigurationSettings>
     <Endpoints>
       <InputEndpoint name="Endpoint1" protocol="http" port="8080" />

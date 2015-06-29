@@ -10,13 +10,14 @@
     <Instances count="1" />
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="ImageStorageAccountConn" value="DefaultEndpointsProtocol=https;AccountName=anqistorage;AccountKey=fUc53jbOHUCBk37wlvmuL2KQqhvcv0a1pD36rkipMe4N1lm9xpywzTevKdIv8LDPUSDas/1XVmRLlowiBbT4cw==" />
     </ConfigurationSettings>
   </Role>
   <Role name="AutomationService">
     <Instances count="1" />
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
-      <Setting name="Microsoft.ServiceBus.ConnectionString" value="Endpoint=sb://[your namespace].servicebus.windows.net;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[your key]" />
+      <Setting name="Microsoft.ServiceBus.ConnectionString" value="Endpoint=sb://anqiservicebus.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=UoqzETvjStl672jZuQhgcMcoFnNnPK222vg6tvdJRZg=" />
     </ConfigurationSettings>
   </Role>
   <Role name="CloudManagementAPI">

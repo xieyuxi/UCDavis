@@ -15,6 +15,7 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ManagementPlatform.Models;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace ManagementPlatform.Controllers
 {
@@ -70,6 +71,47 @@ namespace ManagementPlatform.Controllers
             UserProfile profile = JsonConvert.DeserializeObject<UserProfile>(responseString);
 
             return View(profile);
+        }
+
+
+
+        BlobStorageService _blobStorageService = new BlobStorageService();
+
+        public ActionResult Upload()
+        {
+            CloudBlobContainer blobContainer = _blobStorageService.GetCloudBlobContainer();
+            List<string> blobs = new List<string>();
+            foreach (var blobItem in blobContainer.ListBlobs())
+            {
+                blobs.Add(blobItem.Uri.ToString());
+            }
+            return View(blobs);
+        }
+
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase image)
+        {
+            if (image.ContentLength > 0)
+            {
+                CloudBlobContainer blobContainer = _blobStorageService.GetCloudBlobContainer();
+                CloudBlockBlob blob = blobContainer.GetBlockBlobReference(image.FileName);
+                blob.UploadFromStream(image.InputStream);
+            }
+            return RedirectToAction("Upload");
+        }
+
+        [HttpPost]
+        public string DeleteImage(String Name)
+        {
+            Uri uri = new Uri(Name);
+            String filename = System.IO.Path.GetFileName(uri.LocalPath);
+
+            CloudBlobContainer blobContainer = _blobStorageService.GetCloudBlobContainer();
+            CloudBlockBlob blob = blobContainer.GetBlockBlobReference(filename);
+
+            blob.Delete();
+
+            return "File Deleted.";
         }
     }
 }
